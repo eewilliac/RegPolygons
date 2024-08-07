@@ -10,17 +10,16 @@ line_color = (255, 0, 0)
 poly_coords = []
 
 def generate_polygon_coords():
-    sides = 4
     radius = 100
-    angle = 360/sides
-    angle = angle * (math.pi / 180) #convert to radians
+    sides = 4
     for current_side in range(0,sides):
-        x = 100 + radius * math.cos(angle*current_side)
-        y = 100 + radius * math.sin(angle*current_side)
+        x = 100+radius * math.cos(2*math.pi*current_side/sides)
+        y = 100+radius * math.sin(2*math.pi*current_side/sides)
         coord = tuple([x,y])
         poly_coords.append(coord)
     poly_coords.append(poly_coords[0])
     return poly_coords
+
 
 def main(poly_coords):
     screen=pygame.display.set_mode((width,height))
@@ -37,5 +36,5 @@ def main(poly_coords):
 
 
 if __name__ == "__main__":
-    coords = generate_polygon_coords
+    coords = generate_polygon_coords()
     main(coords)
